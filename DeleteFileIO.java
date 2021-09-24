@@ -17,7 +17,7 @@ public class DeleteFileIO {
 			System.out.println("file khong ton tai");
 		}
 	}
-	
+//them ghi chu dong 20	
 	public boolean deleteEmptyFolder(String source)
 	{
 		File folder = new File(source);
