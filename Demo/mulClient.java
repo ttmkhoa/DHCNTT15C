@@ -1,28 +1,27 @@
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
+import java.net.*;
+import java.util.*;
 
 public class mulClient {
-    final static String host = "224.0.0.2";
-    final static int port = 7777;
+    public static int port = 7777;
 
     public static void main(String[] args) {
+        System.setProperty("java.net.preferIIPv4Stack", "true");
 
         try {
-            MulticastSocket ms = new MulticastSocket(port);
-            ms.joinGroup(InetAddress.getByName(host));
+            InetAddress group = InetAddress.getByName("225.6.7.8");
+            MulticastSocket msocket = new MulticastSocket(port);
+            msocket.joinGroup(group);
 
             byte[] buf = new byte[512];
             while (true) {
                 DatagramPacket nhan = new DatagramPacket(buf, buf.length);
-                ms.receive(nhan);
+                msocket.receive(nhan);
                 String str = new String(buf, 0, buf.length);
                 System.out.println("nhan tu server: " + str);
 
             }
 
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
     }

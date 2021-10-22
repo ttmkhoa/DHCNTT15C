@@ -1,5 +1,6 @@
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.util.Date;
 
 public class UDPServer {
     public static void main(String[] args) {
@@ -19,9 +20,10 @@ public class UDPServer {
 
                 // xuly...
                 String str1 = str.toUpperCase();
+                String str2 = (new Date()).toString();
 
                 // goi pkt
-                DatagramPacket goi = new DatagramPacket(str1.getBytes(), nhan.getLength(), nhan.getAddress(),
+                DatagramPacket goi = new DatagramPacket(str2.getBytes(), str2.getBytes().length, nhan.getAddress(),
                         nhan.getPort());
                 s.send(goi);
             }
